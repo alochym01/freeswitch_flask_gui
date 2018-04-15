@@ -46,8 +46,8 @@ else
         -- using redis to store record
         client:set(user, record)
         -- redis close connection
-        client:quit()
     end
+    client:quit()
     XML_STRING = [[
     <?xml version="1.0" encoding="UTF-8" standalone="no"?>
         <document type="freeswitch/xml">
