@@ -1,0 +1,7 @@
+<configuration name="lua.conf" description="LUA Configuration">
+  <settings>
+    <!-- <param name="module-directory" value="/usr/lib64/?.so"/> -->
+    <param name="xml-handler-script" value="directory.lua"/>
+    <param name="xml-handler-bindings" value="directory"/>
+  </settings>
+</configuration>
