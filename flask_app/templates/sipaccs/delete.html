@@ -1,0 +1,109 @@
+{% extends "base.html" %} 
+
+{% block content %}
+<div class="content-wrapper" style="min-height: 945.6px;">
+  <!-- Content Header (Page header) -->
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <!-- right column -->
+      <div class="col-md-12">
+        <!-- Horizontal Form -->
+        <div class="box box-info">
+          <div class="box-header with-border">
+            <h3 class="box-title">Horizontal Form</h3>
+            <p>
+              {% for field in form.errors %} {% for error in form.errors[field] %}
+              <div class="alert alert-error">
+                <strong>Error!</strong> {{error}}
+              </div>
+              {% endfor %} {% endfor %}
+            </p>
+          </div>
+          <!-- /.box-header -->
+          <!-- form start -->
+          <form class="form-horizontal" action="{{ url_for('sip-account.delete', id=sipacc.id) }}" method="POST">
+            {{ form.hidden_tag() }}
+            <div class="box-body">
+              <div class="form-group">
+                <label for="username" class="col-sm-2 control-label">Username</label>
+
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" name="username" value="{{ sipacc.username }}">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="domain" class="col-sm-2 control-label">Domain</label>
+
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" name="domain" value="{{ sipacc.domain }}">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="toll_allow" class="col-sm-2 control-label">Toll Allow</label>
+
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" name="toll_allow" value="{{ sipacc.toll_allow}}">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="context" class="col-sm-2 control-label">Context</label>
+
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" name="context" value="{{ sipacc.context }}">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="max_calls" class="col-sm-2 control-label">Max Calls</label>
+
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" name="max_calls" value="{{ sipacc.max_calls }}">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="caller_number" class="col-sm-2 control-label">Caller Number</label>
+
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" name="caller_number" value="{{ sipacc.caller_number }}">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="outbound_caller_number" class="col-sm-2 control-label">Out-bound Number</label>
+
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" name="outbound_caller_number" value="{{ sipacc.outbound_caller_number }}">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="caller_name" class="col-sm-2 control-label">Caller Name</label>
+
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" name="caller_name" value="{{ sipacc.caller_name }}">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="outbound_caller_name" class="col-sm-2 control-label">Out-bound Name</label>
+
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" name="outbound_caller_name" value="{{ sipacc.outbound_caller_name }}">
+                </div>
+              </div>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer text-center">
+              <button type="submit" class="btn btn-info">Delete</button>
+            </div>
+            <!-- /.box-footer -->
+          </form>
+        </div>
+        <!-- /.box -->
+      </div>
+      <!--/.col (right) -->
+    </div>
+    <!-- /.row -->
+  </section>
+  <!-- /.content -->
+</div>
+{% endblock %}
