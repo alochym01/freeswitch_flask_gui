@@ -7,6 +7,7 @@
 -- create redis connection
 -- local redis = require 'redis'
 -- local client = redis.connect('127.0.0.1', 6379)
+-- https://github.com/nrk/redis-lua
 
 -- using freeswitch dbh and lua-redis to generated sip user directory
 -- get user and domain from freeswitch requests
