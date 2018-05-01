@@ -59,6 +59,7 @@ def initdb():
 
 # Running flask with gunicorn, nginx web proxy and systemd
 - create flask_app.service in `/etc/systemd/system/`
+- [reference link of gunicorn with systemd](https://bartsimons.me/gunicorn-as-a-systemd-service/)
 - the content:
 ```
 [Unit]
@@ -83,10 +84,6 @@ PrivateTmp = true
 [Install]
 WantedBy = multi-user.target
 ```
-- create folder and change own to user who running flask
-    + `/bin/mkdir /run/flask_app`
-    + `/bin/chown -R hadn:hadn /run/flask_app`
-- [reference link](https://bartsimons.me/gunicorn-as-a-systemd-service/)
 - nginx configuration and [reference link](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xvii-deployment-on-linux)
 ```
 server {
