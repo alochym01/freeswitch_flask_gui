@@ -64,7 +64,7 @@ def initdb():
 [Unit]
 Description = Flask GUI for Freeswitch
 After = network.target
-After=postgresql-9.6.service
+After = postgresql-9.6.service
 
 [Service]
 PermissionsStartOnly = true
@@ -72,6 +72,8 @@ PIDFile = /run/flask_app/flask_app.pid
 User = hadn
 Group = hadn
 WorkingDirectory = /mnt/fs_gui
+ExecStartPre = /bin/mkdir /run/flask_app
+ExecStartPre = /bin/chown -R hadn:hadn /run/flask_app
 ExecStart = /home/hadn/.local/share/virtualenvs/flask_large_admin_gui-EPTiH8UD/bin/gunicorn freeswitch:app -b 127.0.0.1:8000 -w 4 --pid /run/flask_app/flask_app.pid
 ExecReload = /bin/kill -s HUP $MAINPID
 ExecStop = /bin/kill -s TERM $MAINPID
