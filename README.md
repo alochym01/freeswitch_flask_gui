@@ -56,3 +56,32 @@ def initdb():
 |:--------:|:------:|:------------:|:-------:|:---------:|:-------------:|:----------------------:|:-----------:|:-------------------:|
 | string   | string | string       | string  | integer   | integer       | integer                | string      | string              |
 | 1000     | abc.com|local,domestic|default  | 1         | 1000          | +84966734472           | Do Nguyen Ha| Do Nguyen Ha        |
+
+# Running flask with gunicorn, nginx web proxy and systemd
+- create flask_app.service in `/etc/systemd/system/`
+- the content:
+```
+[Unit]
+Description = Flask GUI for Freeswitch
+After = network.target
+After=postgresql-9.6.service
+
+[Service]
+PermissionsStartOnly = true
+PIDFile = /run/flask_app/flask_app.pid
+User = hadn
+Group = hadn
+WorkingDirectory = /mnt/fs_gui
+ExecStart = /home/hadn/.local/share/virtualenvs/flask_large_admin_gui-EPTiH8UD/bin/gunicorn freeswitch:app -b 127.0.0.1:8000 -w 4 --pid /run/flask_app/flask_app.pid
+ExecReload = /bin/kill -s HUP $MAINPID
+ExecStop = /bin/kill -s TERM $MAINPID
+ExecStopPost = /bin/rm -rf /run/flask_app
+PrivateTmp = true
+
+[Install]
+WantedBy = multi-user.target
+```
+- create folder and change own to user who running flask
+    + `/bin/mkdir /run/flask_app`
+    + `/bin/chown -R hadn:hadn /run/flask_app`
+- [reference link](https://bartsimons.me/gunicorn-as-a-systemd-service/)
