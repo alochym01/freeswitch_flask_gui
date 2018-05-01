@@ -27,6 +27,6 @@ run command `flask initdb`
 
 # freeswitch user table
 | username | domain | toll_allow   | context | max_calls | caller_number | outbound_caller_number | caller_name | outbound_caller_name |
-|---------:|:------:|:------------:|:-------:|:---------:|:-------------:|:----------------------:|:-----------:|--------------------:|
+|:--------:|:------:|:------------:|:-------:|:---------:|:-------------:|:----------------------:|:-----------:|:-------------------:|
 | string   | string | string       | string  | integer   | integer       | integer                | string      | string              |
 | 1000     | abc.com|local,domestic|default  | 1         | 1000          | 0966734472             | Do Nguyen Ha| Do Nguyen Ha        |
