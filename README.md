@@ -1,9 +1,9 @@
 # freeswitch_flask_gui
-Using Freeswitch GUI
+- Using Freeswitch GUI
 
 # using flask
-export FLASK_APP=freeswitch.py
-export FLASK_DEBUG=True
+- export FLASK_APP=freeswitch.py
+- export FLASK_DEBUG=True
 
 # using flask shell with click
 ``` python
@@ -23,7 +23,25 @@ def initdb():
         pass
         print(str(e))
 ```
-run command `flask initdb`
+- run command `flask initdb`
+
+# Postgres SQL Configuration
+- Create user
+    ```
+        postgres# CREATE USER "freeswitch" WITH PASSWORD 'password';
+    ```
+- Create database
+    ```
+        postgres# CREATE DATABASE freeswitch;
+    ```
+- Grant privileges
+    ```
+        postgres# grant all privileges on database freeswitch to freeswitch;
+    ```
+- Testing connection to database
+    ```
+        [hadn@localhost ~]$ psql -d freeswitch -U freeswitch -W -h 127.0.0.1
+    ```
 
 # freeswitch user table
 | username | domain | toll_allow   | context | max_calls | caller_number | outbound_caller_number | caller_name | outbound_caller_name |
