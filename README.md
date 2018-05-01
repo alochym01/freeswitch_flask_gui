@@ -4,6 +4,14 @@
 # using flask
 - export FLASK_APP=freeswitch.py
 - export FLASK_DEBUG=True
+- setting flask using postgresql
+    + export DATABASE_URL="postgresql://freeswitch:password@127.0.0.1:5432/freeswitch"
+    + edit config.py and set `DATABASE_URL="postgresql://freeswitch:password@127.0.0.1:5432/freeswitch"`
+
+# using flask with flask-migrate
+- step 1: `flask db init`
+- step 2: `flask db migrate`
+- step 1: `flask db upgrade`
 
 # using flask shell with click
 ``` python
