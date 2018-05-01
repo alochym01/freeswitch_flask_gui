@@ -120,7 +120,7 @@ server {
 
     location /static {
         # handle static files directly, without forwarding to the application
-        alias/mnt/fs_gui/flask_app/static;
+        alias /mnt/fs_gui/flask_app/static;
         expires 30d;
     }
 }
