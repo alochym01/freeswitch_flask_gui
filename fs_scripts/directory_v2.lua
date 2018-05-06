@@ -33,7 +33,9 @@ else
                 <section name="directory">
                 <domain name="]] .. domain .. [[">
                     <params>
-                    <param name="dial-string" value="{presence_id=${dialed_user}@${dialed_domain}}${sofia_contact(${dialed_user}@${dialed_domain})}"/>
+                        <param name="dial-string" value="{^^:sip_invite_domain=${dialed_domain}:presence_id=${dialed_user}@${dialed_domain}}${sofia_contact(*/${dialed_user}@${dialed_domain})},${verto_contact(${dialed_user}@${dialed_domain})}"/>
+                        <param name="jsonrpc-allowed-methods" value="verto"/>
+                        <param name="jsonrpc-allowed-event-channels" value="demo,conference,presence"/>
                     </params>
                     <groups>
                     <group name="default">
