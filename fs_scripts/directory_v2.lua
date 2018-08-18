@@ -64,7 +64,8 @@ else
             </document>
             ]]
             -- using redis to store record
-            client:set(key, return_string)
+            client:set(key, 3*60, return_string)
+            -- client:setex('foo', 3*60, 'bar')
         end)
     else
         return_string = record
